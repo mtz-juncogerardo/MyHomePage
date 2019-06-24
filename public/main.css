@@ -1,0 +1,97 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-size: 16px;
+  color: #333333;
+  background-image: url('./Images/morning.jpg');
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+
+.todo-box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 25vw;
+  padding: 50px;
+}
+
+#todo-input{
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  color: white;
+  margin-bottom: 50px;
+  font-size: 1em;
+  padding-left: 10px;
+}
+
+.todo-list{
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 1.2em;
+}
+
+.todo-list li{
+  margin-bottom: 10px;
+}
+
+.todo-list li a{
+  text-decoration: none;
+}
+
+/* ---------MAIN ----------*/
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+}
+
+.main-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  height: 50%;
+}
+
+#meta-input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 5px solid white;
+  width: 100%;
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+}
+
+#time{
+  font-size: 5em;
+}
+
+#saludo{
+  font-size: 3em;
+}
+
+#meta{
+  font-size: 2.5em;
+}
+
+#frase, #autor{
+  font-size: 1em;
+}
