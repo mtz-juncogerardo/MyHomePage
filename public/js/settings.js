@@ -58,3 +58,5 @@ imageUpload.addEventListener('change', () => {
     preview.src = "";
   }
 });
+
+//Change Font

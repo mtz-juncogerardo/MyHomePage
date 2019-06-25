@@ -1,25 +1,21 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const app = express();
-const motivation = require('motivation/lib/quotes');
-//var m = motivation.get()
-const googleTranslate = require('./config/googleTranslate.json');
-// Imports the Google Cloud client library
-const {Translate} = require('@google-cloud/translate');
-// Instantiates a client,
-const translate = new Translate(googleTranslate.projectId);
+const motivation = require('motivation/lib/index');
+
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-app.get('/',(req,res)=>{
-  res.render('index',{
-    googleFont: 'Lato',
-    nombre: 'Gerardo',
-  });
-});
+//Routes
+require('./routes/homePage')(app);
 
-app.listen(process.env.PORT || 3000, ()=>{
+app.listen(process.env.PORT || 3000, () => {
   console.log("Servidor iniciado: Puerto 3000");
 });
