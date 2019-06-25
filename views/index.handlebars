@@ -1,6 +1,8 @@
 
+
+
   <div class="todo-box">
-    <input id="todo-input" type="text" name="todo" placeholder="Añade una tarea">
+    <input id="todo-input" class="input-border" type="text" name="todo" placeholder="Añade una tarea">
     <ul class="todo-list">
       <li>
         <a>Pasear al perro</a>
@@ -17,12 +19,31 @@
     </ul>
   </div>
 
+  <img id="settings" class="animate" src="./Images/settings.png" alt="">
+  <div class="settings-box">
+    <div class="color">
+      <input id="color-box" type="color" name="colorbox" value="#ffffff">
+      <label class="label-text">Cambiar Color</label>
+    </div>
+    <div class="amPm">
+      <label class="switch">
+        <input id="hrs24" type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+      <label class="label-text">24hrs</label>
+    </div>
+    <div class="image-upload-box">
+      <input id="image-upload" type="file" accept=".png, .jpg, .jpeg" />
+      <label class="label-text">Cambiar Imagen de Fondo</label>
+    </div>
+  </div>
+
   <main>
     <div class="main-box">
       <time id="time">00:00:00</time>
       <span id="saludo">Saludos {{nombre}}</span>
       <span id="meta">¿Cual es tu meta el dia de hoy?</span>
-      <input id="meta-input" type="text" name="meta">
+      <input id="meta-input" class="input-border" type="text" name="meta">
       <span id="frase">“Change is the essence of life; be willing to surrender
       what you are for what you could become.”</span>
       <span id="autor">Anonimo</span>

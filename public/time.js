@@ -4,7 +4,7 @@ const metaText = document.getElementById('meta');
 const metaBox = document.getElementById('meta-input');
 const frase = document.getElementById('frase');
 const autor = document.getElementById('autor');
-let amPm = true;
+let amPm = false;
 
 //Set time
 function displayTime() {
