@@ -9,20 +9,29 @@ let font = {
 module.exports = (app) => {
   app.get('/', (req, res) => {
 
+    let phrase = quote();
+
     res.render('index', {
       googleFont: font.googleFont,
       fontLink: font.fontLink,
-      frase: quote().text,
-      autor: quote().author,
+      frase: phrase.text,
+      autor: phrase.author,
       nombre: 'Gerardo'
     });
   });
 
-  app.post("/", (req, res) => {
+  app.post('/', (req, res) => {
     font = {
       fontLink: getLink(req.body.font),
       googleFont: req.body.font
     };
     res.redirect('back');
   });
+
+  app.post('/todo',(req,res)=>{
+    let todoItem = req.body.todo;
+    res.send(todoItem);
+  });
+
+
 };
