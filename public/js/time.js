@@ -16,7 +16,7 @@ function displayTime() {
   //Set am or pm
   let setAmPm = () => {
     if (amPm) {
-      let amOrPm = hour >= 12 ? "AM" : "PM";
+      let amOrPm = hour >= 12 ? "PM" : "AM";
       hour = hour % 12 || 12;
       return amOrPm;
     } else {

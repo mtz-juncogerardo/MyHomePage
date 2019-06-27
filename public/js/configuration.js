@@ -5,6 +5,8 @@ const hrs24 = document.getElementById('hrs24');
 const settingBox = document.querySelector('.settings-box');
 const settingIcon = document.getElementById('settings');
 const imageUpload = document.getElementById('image-upload');
+const tempForm = document.querySelector('.temp-form');
+const tempSwitch = document.getElementById('temperature');
 
 let boxOpen = false;
 
@@ -59,4 +61,21 @@ imageUpload.addEventListener('change', () => {
   }
 });
 
-//Change Font
+//Geolocation
+window.addEventListener('load',()=>{
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(getPosition);
+  }
+});
+
+function getPosition(position){
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  console.log("latitud", lat);
+  console.log("longitud", lon);
+}
+
+//temperature
+temperature.addEventListener('change',()=>{
+  tempForm.submit();
+});

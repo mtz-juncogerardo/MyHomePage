@@ -119,6 +119,13 @@ main{
   color: #333333;
 }
 
+.p-text{
+  color: #333333;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
 .label-text a{
   color: blue;
 }
@@ -172,7 +179,7 @@ main{
   top: 0;
   background-color: #f6f6f6;
   height: 100vh;
-  width: 50vw;
+  width: 30vw;
   display: flex;
   justify-content: space-around;
   align-items: center;

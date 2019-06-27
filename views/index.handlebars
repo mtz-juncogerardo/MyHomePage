@@ -18,6 +18,12 @@
   </ul>
 </div>
 
+<!--Showing Temperature -->
+<div class="showingTemp">
+  <p>{{temp}}°{{grados}}</p>
+  <p>{{tempText}}</p>
+</div>
+
 <img id="settings" class="animate" src="./Images/settings.png" alt="">
 <div class="settings-box">
   <!-- Color -->
@@ -37,12 +43,23 @@
     </form>
   <!-- Hour -->
   <div class="amPm">
+    <p class="p-text">Cambiar Formato de Hora</p>
     <label class="switch">
       <input id="hrs24" type="checkbox" checked>
       <span class="slider round"></span>
     </label>
     <label class="label-text">24hrs</label>
   </div>
+  <!-- Temperature -->
+
+  <form class="temp-form" action="/tempConvert" method="post">
+    <p class="p-text">Formato de Temperatura</p>
+    <label class="switch">
+      <input id="temperature" type="checkbox" checked>
+      <span class="slider round"></span>
+    </label>
+    <label class="label-text">Convertir a Farenheit</label>
+  </form>
   <!-- Background -->
   <div class="image-upload-box">
     <input id="image-upload" type="file" accept=".png, .jpg, .jpeg" />

@@ -2,7 +2,14 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app = express();
-const motivation = require('motivation/lib/index');
+const mongoose = require('mongoose');
+const key = require('./config/keys.js');
+
+require('./models/settings');
+
+
+
+mongoose.connect(key.mongoConnection, { useNewUrlParser: true });
 
 
 app.use(express.static('public'));
