@@ -17,6 +17,7 @@ module.exports = (app) => {
     //Get Weather
     getWeather.then(body => {
       let weather = JSON.parse(body);
+      console.log(weather);
 
       res.render('index', {
         googleFont: font.googleFont,
@@ -26,8 +27,9 @@ module.exports = (app) => {
         temp: weather.current.temp_c,
         grados: "C",
         nombre: 'Gerardo',
+        tempText: weather.current.condition.text
       });
-    });
+    })
   });
 
 

@@ -25,22 +25,22 @@
 </div>
 
 <img id="settings" class="animate" src="./Images/settings.png" alt="">
-<div class="settings-box">
+<form action="/" class="settings-box" method="post">
   <!-- Color -->
   <div class="color">
     <input id="color-box" type="color" name="colorbox" value="#ffffff">
     <label class="label-text">Cambiar Color</label>
   </div>
   <!-- Font -->
-    <form class="font-box" action="/" method="post">
-      <input class="font-input" type="text" name="font" placeholder="Nombre Exacto de la Fuente" required>
-      <label class="label-text">Ingresa a
-        <a href="https://fonts.google.com" target="_blank">Google Fonts</a>
-        Busca la fuente de tu preferencia y escribe en la caja el nombre de la fuente
-        respetando Mayusculas y Minusculas.
-      </label>
-      <button class="btn" type="submit" name="button">Actualizar Fuente</button>
-    </form>
+  <div class="font-box">
+    <input class="font-input" type="text" name="font" placeholder="Nombre Exacto de la Fuente" required>
+    <label class="label-text">Ingresa a
+      <a href="https://fonts.google.com" target="_blank">Google Fonts</a>
+      Busca la fuente de tu preferencia y escribe en la caja el nombre de la fuente
+      respetando Mayusculas y Minusculas.
+    </label>
+    <button class="btn" type="submit" name="button">Actualizar Fuente</button>
+  </div>
   <!-- Hour -->
   <div class="amPm">
     <p class="p-text">Cambiar Formato de Hora</p>
@@ -52,20 +52,20 @@
   </div>
   <!-- Temperature -->
 
-  <form class="temp-form" action="/tempConvert" method="post">
+  <div class="temp-form">
     <p class="p-text">Formato de Temperatura</p>
     <label class="switch">
       <input id="temperature" type="checkbox" checked>
       <span class="slider round"></span>
     </label>
     <label class="label-text">Convertir a Farenheit</label>
-  </form>
+  </div>
   <!-- Background -->
   <div class="image-upload-box">
     <input id="image-upload" type="file" accept=".png, .jpg, .jpeg" />
     <label class="label-text">Cambiar Imagen de Fondo</label>
   </div>
-</div>
+</form>
 
 <main>
   <div class="main-box">
