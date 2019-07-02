@@ -21,7 +21,7 @@
 <!--Showing Temperature -->
 <div class="showingTemp">
   <p>{{temp}}°{{grados}}</p>
-  <p>{{tempText}}</p>
+  <img class="weatherIcon" src="./Images/day/{{weatherCode}}.png" alt="clima icon">
 </div>
 
 <img id="settings" class="animate" src="./Images/settings.png" alt="">
@@ -33,7 +33,7 @@
   </div>
   <!-- Font -->
   <div class="font-box">
-    <input class="font-input" type="text" name="font" placeholder="Nombre Exacto de la Fuente" required>
+    <input class="font-input" type="text" name="font" placeholder="Nombre Exacto de la Fuente">
     <label class="label-text">Ingresa a
       <a href="https://fonts.google.com" target="_blank">Google Fonts</a>
       Busca la fuente de tu preferencia y escribe en la caja el nombre de la fuente
@@ -55,7 +55,7 @@
   <div class="temp-form">
     <p class="p-text">Formato de Temperatura</p>
     <label class="switch">
-      <input id="temperature" type="checkbox" checked>
+      <input id="temperature" type="checkbox">
       <span class="slider round"></span>
     </label>
     <label class="label-text">Convertir a Farenheit</label>

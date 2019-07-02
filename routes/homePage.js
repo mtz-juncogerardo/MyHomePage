@@ -3,6 +3,7 @@ const getLink = require('../misc/fontMaker');
 const getWeather = require('../misc/weather');
 const request = require('request');
 const key = require('../config/keys.js');
+const weatherIcon = require('../misc/weatherIcons');
 
 let font = {
   fontLink: 'Lato',
@@ -17,7 +18,9 @@ module.exports = (app) => {
     //Get Weather
     getWeather.then(body => {
       let weather = JSON.parse(body);
-      console.log(weather);
+      let code = weather.current.condition.code;
+      let codeObject = weatherIcon.filter(item => item.code === code); 
+      //Get icon
 
       res.render('index', {
         googleFont: font.googleFont,
@@ -27,7 +30,7 @@ module.exports = (app) => {
         temp: weather.current.temp_c,
         grados: "C",
         nombre: 'Gerardo',
-        tempText: weather.current.condition.text
+        weatherCode: codeObject[0].icon
       });
     })
   });

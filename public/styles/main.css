@@ -82,7 +82,11 @@ main{
   justify-content: space-between;
   width: 50%;
   height: 50%;
-  margin-bottom: 5em;
+  margin-bottom: 12em;
+}
+
+.weatherIcon{
+  height: 80px;
 }
 
 #meta-input{

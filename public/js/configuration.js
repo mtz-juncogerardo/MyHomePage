@@ -35,22 +35,13 @@ colorBox.addEventListener('change', () => {
   }
 });
 
-//Activate/Deactivate 24hrs
-hrs24.addEventListener('change', () => {
-  if (amPm) {
-    amPm = false;
-  } else {
-    amPm = true;
-  }
-});
-
 //Change BG Images
 
 imageUpload.addEventListener('change', () => {
   let readImg = new FileReader();
   let image = imageUpload.files[0];
 
-  readImg.onloadend = ()=>{
+  readImg.onloadend = () => {
     body.style.backgroundImage = `url('${readImg.result}')`;
   };
 
@@ -61,21 +52,25 @@ imageUpload.addEventListener('change', () => {
   }
 });
 
-//Geolocation
-window.addEventListener('load',()=>{
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(getPosition);
+//Get geolocation
+window.addEventListener('load', () => {
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(savePosition);
+  } else {
+    alert("No pudimos obtener acceso a tu ubicación el servicio de clima estara deshabilitado");
   }
 });
 
-function getPosition(position){
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  console.log("latitud", lat);
-  console.log("longitud", lon);
+function savePosition(position) {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
 }
 
-//temperature
-temperature.addEventListener('change',()=>{
-  tempForm.submit();
+//Prevent Tab Key
+window.addEventListener('keydown', (e) => {
+
+  if (e.keyCode === 9) {
+    e.preventDefault();
+  }
 });
