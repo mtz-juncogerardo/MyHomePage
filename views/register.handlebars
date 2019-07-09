@@ -1,0 +1,51 @@
+<div class="registration-page">
+    <div class="reg-title">
+        <h3>Registrate!</h3>
+        <p>Por favor completa todos los campos</p>
+    </div>
+    <div style="margin-bottom: 20px"> {{msg}} </div>
+    <form action="/newUser" method="post">
+        <label for="">Ingresa tu Nombre o Apodo para Saludo</label>
+        <input name="apodo" type="text" placeholder="Apodo" required>
+        <label for="">Correo:</label>
+        <input name="email" type="email" placeholder="E-mail" required>
+        <label id="labelOne" for="">Contraseña 8 caracteres minimo</label>
+        <input id="pass" name="pass" type="password" placeholder="Contraseña" required>
+        <label id="labelTwo" for="">Repite tu Contraseña</label>
+        <input id="re-pass" name="repass" type="password" placeholder="Repite tu Contraseña" required>
+        <button class="buttonSbm" type="submit">Registrarse</button>
+    </form>
+</div>
+
+//Password Checkup
+<script>
+const pass = document.getElementById('pass');
+const rePass = document.getElementById('re-pass');
+const labelOne = document.getElementById('labelOne')
+const labelTwo = document.getElementById('labelTwo');
+
+pass.addEventListener('keyup', ()=>{
+    if(pass.value.length < 8){
+        pass.style.border = "2px solid red";
+        labelOne.innerText = "La contraseña debe ser de 8 caracteres minimo";
+    }
+    else{
+        pass.style.border = "2px solid green";
+        labelOne.innerText = "Contraseña Segura";
+    }
+});
+
+rePass.addEventListener('keyup', ()=>{
+
+    if(rePass.value !== pass.value){
+        rePass.style.border = "2px solid red";
+        labelTwo.innerText = "Las contraseñas no coinciden";
+    }
+    else{
+        rePass.style.border = "2px solid green";
+        labelTwo.innerText = "Las Contraseñas Coinciden!";
+    }
+});
+
+
+</script>

@@ -10,6 +10,9 @@ const tempSwitch = document.getElementById('temperature');
 
 let boxOpen = false;
 
+
+
+
 //Open Settings
 settingIcon.addEventListener('click', () => {
   if (boxOpen) {
@@ -62,10 +65,21 @@ window.addEventListener('load', () => {
   }
 });
 
-function savePosition(position) {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
-}
+  function savePosition(position) {
+    let coords ={
+      lat: position.coords.latitude,
+      long: position.coords.longitude
+    }
+
+    const options ={
+      method: "POST",
+      body: JSON.stringify(coords),
+      headers:{"Content-Type": "application/json"}
+    }
+
+    fetch('http://localhost:3000/weather/coords', options);
+  }
+
 
 //Prevent Tab Key
 window.addEventListener('keydown', (e) => {
