@@ -1,5 +1,4 @@
 const request = require('request');
-const key = require('../config/keys.js');
 
 let getData = (url) => {
 
@@ -20,7 +19,7 @@ module.exports = app =>{
 
     let coords = req.body;
     console.log(coords);
-    let url = `http://api.apixu.com/v1/current.json?key=${key.weatherKey}&q=${coords.lat},${coords.long}`;
+    let url = `http://api.apixu.com/v1/current.json?key=${process.env.weatherKey}&q=${coords.lat},${coords.long}`;
   
     getData(url).then(data => res.json(data));
   

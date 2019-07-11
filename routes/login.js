@@ -2,7 +2,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const key = require("../config/keys");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
@@ -59,7 +58,7 @@ module.exports = app => {
   //Haciendo Login
   app.get("/login", (req, res) => {
 
-    jwt.verify(req.cookies.jwtToken, key.jsonSecret, (err, decoded)=>{
+    jwt.verify(req.cookies.jwtToken, process.env.jsonSecret, (err, decoded)=>{
 
       if(decoded){
         res.redirect('/homePage');
@@ -77,7 +76,7 @@ module.exports = app => {
       } else {
         bcrypt.compare(req.body.pass, person.password, (err, response) => {
           if (response) {
-            jwt.sign({ email: person.email }, key.jsonSecret, (err, authToken) => {
+            jwt.sign({ email: person.email }, process.env.jsonSecret, (err, authToken) => {
               res.cookie('jwtToken', authToken, {maxAge: 1600000000});
               res.redirect('/homePage'); 
             });

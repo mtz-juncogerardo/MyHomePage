@@ -33,7 +33,7 @@ async function getWeather(position){
     long: position.coords.longitude
   }
 
-  const rawResponse = await fetch('http://localhost:3000/weather', {
+  const rawResponse = await fetch('https://home-page-my.herokuapp.com/weather', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -65,7 +65,7 @@ async function getData() {
     }
   };
 
-  let response = await fetch("http://localhost:3000/home", options);
+  let response = await fetch("https://home-page-my.herokuapp.com/home", options);
   let data = await response.json();
 
   return data;

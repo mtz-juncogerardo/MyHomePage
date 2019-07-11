@@ -3,7 +3,6 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-const key = require('./config/keys.js');
 const cors = require('cors');
 const getLink = require('./misc/fontMaker');
 const cookieParser = require("cookie-parser");
@@ -16,7 +15,7 @@ app.use(cookieParser());
 require('./models/settings');
 let userSettings = mongoose.model("settings");
 
-mongoose.connect(key.mongoConnection, { useNewUrlParser: true });
+mongoose.connect(process.env.mongoConnection, { useNewUrlParser: true });
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -33,7 +32,7 @@ require('./routes/weather')(app);
 
 app.get('/', (req,res)=>{
 
-jwt.verify(req.cookies.jwtToken, key.jsonSecret, (err, decoded)=>{
+jwt.verify(req.cookies.jwtToken, process.env.jsonSecret, (err, decoded)=>{
 
   if(decoded){
     res.redirect('/homePage');
@@ -54,7 +53,7 @@ app.post('/settings', (req,res)=>{
       apodo: req.body.apodo
     };
 
-    jwt.verify(req.cookies.jwtToken, key.jsonSecret, (err, decoded)=>{
+    jwt.verify(req.cookies.jwtToken, process.env.jsonSecret, (err, decoded)=>{
 
       userSettings.findOne({ email: decoded.email}, (err, person) => {
 
@@ -79,7 +78,7 @@ app.post('/settings', (req,res)=>{
 });
 
 app.post('/home', (req,res)=>{
-  jwt.verify(req.cookies.jwtToken, key.jsonSecret, (err, decoded)=>{
+  jwt.verify(req.cookies.jwtToken, process.env.jsonSecret, (err, decoded)=>{
     //Ya decodificada la clave procedemos a buscar el usuario en BD
     if(err){
       res.sendStatus(403);
@@ -94,7 +93,7 @@ app.post('/home', (req,res)=>{
 
 app.get('/homePage', (req,res)=>{
 
-  jwt.verify(req.cookies.jwtToken, key.jsonSecret, (err, decoded)=>{
+  jwt.verify(req.cookies.jwtToken, process.env.jsonSecret, (err, decoded)=>{
 
     if(decoded){
       userSettings.findOne({ email: decoded.email}, (err, person)=>{
