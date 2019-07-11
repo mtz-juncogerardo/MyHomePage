@@ -6,10 +6,8 @@ const settingsSchema = new Schema({
   password: String,
   googleFont: String,
   fontLink: String,
-  name: String,
-  bgImage: String,
-  color: String,
-  clock24: Boolean,
+  apodo: String,
+  colorCode: String,
 });
 
 mongoose.model('settings', settingsSchema);

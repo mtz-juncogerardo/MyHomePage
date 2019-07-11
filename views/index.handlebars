@@ -1,47 +1,49 @@
-<div class="todo-box">
-  <form id="todo-form" action="/todo" method="post">
-    <input id="todo-input" class="input-border" type="text" name="todo" placeholder="Añade una tarea">
-  </form>
-  <ul class="todo-list">
-    <li>
-      <a>Pasear al perro</a>
-    </li>
-    <li>
-      <a>Pasear al perro</a>
-    </li>
-    <li>
-      <a>Pasear al perro</a>
-    </li>
-    <li>
-      <a>Pasear al perro</a>
-    </li>
-  </ul>
-</div>
-
 <!--Showing Temperature -->
 <div class="showingTemp">
-  <p>{{temp}}°{{grados}}</p>
-  <img class="weatherIcon" src="./Images/day/{{weatherCode}}.png" alt="clima icon">
+  <p id="temperatura"></p>
+  <img id="temp-icon" class="weatherIcon">
 </div>
 
+{{!-- Logout link --}}
+<form action="/logout" method="post">
+  <button class="logout-btn" type="submit">Cerrar Sesión</button>
+</form>
+
 <img id="settings" class="animate" src="./Images/settings.png" alt="">
-<form action="/" class="settings-box" method="post">
+<form action="/settings" class="settings-box" method="post">
+  {{!-- Apodo --}}
+  <h4 style="color: black">Configuración</h4>
+  <div class="font-box">
+    <input class="font-input" type="text" name="apodo" placeholder="Nuevo Nombre o Apodo">
+    <label class="label-text">Para cambiar el nombre con el que se te saluda solo escribelo aqui y guarda cambios.
+    </label>
+  </div>
   <!-- Color -->
+  <hr>
   <div class="color">
-    <input id="color-box" type="color" name="colorbox" value="#ffffff">
+    <input id="color-box" type="color" name="colorCode" value="#ffffff">
     <label class="label-text">Cambiar Color</label>
   </div>
+
+  <!-- Background -->
+  <div class="image-upload-box">
+    <input id="image-upload" type="file" name="bgImage" accept=".png, .jpg, .jpeg" />
+    <label class="label-text">Cambiar Imagen de Fondo</label>
+  </div>
+
   <!-- Font -->
+  <hr>
   <div class="font-box">
-    <input class="font-input" type="text" name="font" placeholder="Nombre Exacto de la Fuente">
+    <input class="font-input" type="text" name="fontName" placeholder="Nombre Exacto de la Fuente">
     <label class="label-text">Ingresa a
       <a href="https://fonts.google.com" target="_blank">Google Fonts</a>
       Busca la fuente de tu preferencia y escribe en la caja el nombre de la fuente
       respetando Mayusculas y Minusculas.
     </label>
-    <button class="btn" type="submit" name="button">Actualizar Fuente</button>
+
   </div>
   <!-- Hour -->
+  <hr>
   <div class="amPm">
     <p class="p-text">Cambiar Formato de Hora</p>
     <label class="switch">
@@ -55,25 +57,27 @@
   <div class="temp-form">
     <p class="p-text">Formato de Temperatura</p>
     <label class="switch">
-      <input id="temperature" type="checkbox">
+      <input id="temp-format" type="checkbox">
       <span class="slider round"></span>
     </label>
     <label class="label-text">Convertir a Farenheit</label>
   </div>
-  <!-- Background -->
-  <div class="image-upload-box">
-    <input id="image-upload" type="file" accept=".png, .jpg, .jpeg" />
-    <label class="label-text">Cambiar Imagen de Fondo</label>
-  </div>
+  <button class="btn" type="submit" name="button">Guardar Cambios</button>
+
 </form>
 
 <main>
   <div class="main-box">
     <time id="time">00:00:00</time>
-    <span id="saludo">Saludos {{nombre}}</span>
-    <span id="meta">¿Cual es tu meta el dia de hoy?</span>
+    <div>
+      <span id="saludo">Saludos </span><span id="apodo"></span>
+    </div>
+    <span id="metaSpan">¿Cual es tu meta el dia de hoy?</span>
     <input id="meta-input" class="input-border" type="text" name="meta">
     <span id="frase">{{frase}}</span>
     <span id="autor">{{autor}}</span>
   </div>
 </main>
+
+<script src="./js/time.js"></script>
+<script src="./js/configuration.js"></script>

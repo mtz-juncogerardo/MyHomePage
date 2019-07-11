@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const key = require("../config/keys");
+const express = require("express");
+const cookieParser = require("cookie-parser");
 
 module.exports = app => {
   let userSettings = mongoose.model("settings");
@@ -13,6 +15,8 @@ module.exports = app => {
       extended: true
     })
   );
+  app.use(express.json());
+  app.use(cookieParser());
 
   //Pagina de Registro
   app.get("/register", (req, res) => {
@@ -20,7 +24,7 @@ module.exports = app => {
   });
   //Registrandose
   app.post("/newUser", (req, res) => {
-   userSettings.findOne({ email: req.body.email }, (err, email) => {
+    userSettings.findOne({ email: req.body.email }, (err, email) => {
       if (email) {
         res.render("register", {
           msg: "El E-mail ya se encuentra registrado intenta iniciar sesión"
@@ -36,28 +40,34 @@ module.exports = app => {
 
       //Hash password
       else {
-       bcrypt.hash(req.body.pass, 10, (err, hash) => {
+        bcrypt.hash(req.body.pass, 10, (err, hash) => {
           //Create user in DB
-         new userSettings({
+          new userSettings({
             email: req.body.email,
             password: hash,
             googleFont: "Lato",
             fontLink: "Lato",
-            name: req.body.apodo,
-            bgImage: "./Images/morning.jpg",
-            color: "#333333",
-            clock24: true
+            apodo: req.body.apodo,
+            colorCode: "#ffffff",
           }).save();
-          res.redirect('/home');
+          res.redirect("/login");
         });
       }
-
     });
   });
 
   //Haciendo Login
   app.get("/login", (req, res) => {
-    res.render("login");
+
+    jwt.verify(req.cookies.jwtToken, key.jsonSecret, (err, decoded)=>{
+
+      if(decoded){
+        res.redirect('/homePage');
+      }
+      else{
+        res.render("login");
+      }
+    });
   });
 
   app.post("/login", (req, res) => {
@@ -67,8 +77,9 @@ module.exports = app => {
       } else {
         bcrypt.compare(req.body.pass, person.password, (err, response) => {
           if (response) {
-            jwt.sign({ user: person }, key.jsonSecret, (err, authToken) => {
-              res.end();
+            jwt.sign({ email: person.email }, key.jsonSecret, (err, authToken) => {
+              res.cookie('jwtToken', authToken, {maxAge: 1600000000});
+              res.redirect('/homePage'); 
             });
           } else {
             res.render("login", { msg: "Usuario o Contraseña Incorrecta" });

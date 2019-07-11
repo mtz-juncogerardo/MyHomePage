@@ -4,12 +4,16 @@
         <p>Por favor Ingresa tu email y tu contraseña</p>
     </div>
     <div style="margin-bottom: 20px"> {{msg}} </div>
-    <form action="/login" method="post">
+    <form method="POST" action="/login">
         <label style="font-weight: bold">Correo:</label>
         <input name="email" type="email" placeholder="E-mail" required>
         <label style="font-weight: bold">Contraseña</label>
         <input name="pass" type="password" placeholder="Contraseña" required>
 
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit" class="buttonSbm">Iniciar Sesión</button>
     </form>
+
+    <p style="margin-top: 20px">¿No Estas Registrado?</p><a href="/register">Registrate!</a>
 </div>
+
+

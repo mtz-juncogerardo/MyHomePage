@@ -15,44 +15,9 @@ body{
   overflow: hidden;
 }
 
-.todo-box{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 25vw;
-  padding: 50px;
-}
-
-#todo-input{
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid white;
-  outline: none;
-  margin-bottom: 50px;
-  font-size: 1em;
-  padding-left: 10px;
-  color: white;
-}
-
-.todo-list{
-  height: 100%;
-  width: 100%;
-  font-size: 1.2em;
-}
-
-.todo-list li{
-  margin-bottom: 10px;
-}
-
-.todo-list li a{
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.todo-list li a:hover{
-  font-weight: bold;
+hr{
+  width: 80%;
+  border: 1px solid gray;
 }
 
 /* ---------MAIN ----------*/
@@ -63,6 +28,17 @@ main{
   align-items: center;
   height: 100vh;
   width: 100vw;
+}
+
+.logout-btn{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .showingTemp{
@@ -105,11 +81,11 @@ main{
   font-size: 5em;
 }
 
-#saludo{
+#saludo, #apodo{
   font-size: 3em;
 }
 
-#meta{
+#metaSpan{
   font-size: 2.5em;
 }
 
@@ -227,6 +203,8 @@ main{
 .image-upload-box{
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin: 15px;
 }
 
 #image-upload{
